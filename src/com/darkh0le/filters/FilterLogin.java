@@ -14,6 +14,7 @@ import java.io.IOException;
 public class FilterLogin implements Filter {
 
     FilterConfig fl;
+
     private int counter = 0;
 
     public void init(FilterConfig config) throws ServletException {
