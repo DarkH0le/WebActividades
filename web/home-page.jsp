@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: darkh0le
@@ -12,5 +13,7 @@
 </head>
 <body>
     <h1>Login Success</h1>
+        <%--    Get servletContext--%>
+    <p>El contador es : <c:out value="${pageContext.servletContext.getAttribute('counter')}"/></p>
 </body>
 </html>

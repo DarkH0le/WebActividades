@@ -14,6 +14,7 @@ import java.io.IOException;
 public class FilterLogin implements Filter {
 
     FilterConfig fl;
+    private int counter = 0;
 
     public void init(FilterConfig config) throws ServletException {
         this.fl = config;
@@ -22,6 +23,8 @@ public class FilterLogin implements Filter {
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws ServletException, IOException {
 
         fl.getServletContext().log("Filtering: FilterLogin fired");
+        //Set counter in servletContext
+        fl.getServletContext().setAttribute("counter", ++counter);
 
         //Will return current session if current session exists, notice it will not create a new session
         HttpSession session = ((HttpServletRequest)request).getSession(false);
