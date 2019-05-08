@@ -1,5 +1,7 @@
 package com.darkh0le.servlet;
 
+import com.darkh0le.model.EmployeeManagement;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -16,6 +18,12 @@ public class HomeServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        try {
+            EmployeeManagement.getAllTables();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         request.getRequestDispatcher("home-page.jsp")
                 .forward(request, response);
     }
