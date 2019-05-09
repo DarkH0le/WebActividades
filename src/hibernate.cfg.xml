@@ -5,19 +5,13 @@
 <hibernate-configuration>
     <session-factory>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
-        <property name="connection.url">jdbc:mysql://localhost:3306/MessageRepo?serverTimezone=EST5EDT</property>
-        <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="connection.username">root</property>
+        <property name="connection.url">jdbc:mysql://localhost:3306/EmployeeRepo?serverTimezone=UTC</property>
         <property name="connection.password">Beatles_77b</property>
+        <property name="connection.username">root</property>
+        <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
         <property name="show_sql">true</property>
         <property name="current_session_context_class">thread</property>
         <property name="hibernate.query.factory_class">org.hibernate.hql.internal.classic.ClassicQueryTranslatorFactory</property>
-        <mapping class="com.darkh0le.MessageEntity"/>
-
-        <!-- <property name="connection.username"/> -->
-        <!-- <property name="connection.password"/> -->
-
-        <!-- DB schema will be updated if needed -->
-        <!-- <property name="hibernate.hbm2ddl.auto">update</property> -->
+        <mapping class="com.darkh0le.model.EmployeeEntity"/>
     </session-factory>
 </hibernate-configuration>

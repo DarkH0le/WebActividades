@@ -20,7 +20,7 @@ public class HomeServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         try {
-            EmployeeManagement.getAllTables();
+//            EmployeeManagement.getAllTables();
         } catch (Exception e) {
             e.printStackTrace();
         }

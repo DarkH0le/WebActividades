@@ -32,5 +32,6 @@
         <filter-name>verifiedLogin</filter-name>
         <url-pattern>/home</url-pattern>
         <url-pattern>/home-page.jsp</url-pattern>
+<!--        <url-pattern>/manage</url-pattern>-->
     </filter-mapping>
 </web-app>
