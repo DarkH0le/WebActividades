@@ -35,7 +35,7 @@
                     <input type="hidden" name="employee" value="{id:${row.id},name:${row.name},age:${row.age},email:${row.email}}">
 
                     <button type="submit" name="operation" value="delete">Delete</button>
-                    <button type="submit" name="operation" value="update">Edit</button>
+                    <button type="button" value="update" onclick="submitEdit(this);">Edit</button>
                 </form>
             </td>
         </tr>
@@ -57,7 +57,7 @@
     </label>
     <input id="employeeInfo" type="hidden" name="employee" value="">
     <input type="hidden" name="operation" value="insert">
-    <button id="submitButton" type="button" name="operation" value="insert" onclick="submitForm()">Agregar</button>
+    <button id="submitButton" type="button" name="operation" value="insert" onclick="submitForm(this);">Agregar</button>
 </form>
 </body>
 
@@ -79,6 +79,18 @@
         console.log(employeeInfoElement.value); // formButton.value = "insert";
 
         document.getElementById("insertForm").submit();
+    }
+
+    function submitEdit(element) {
+        console.log("Editing form...");
+
+        console.log(element.parentElement.parentElement);
+
+        let elementToEdit = element.parentElement;
+        let employeeInfo = elementToEdit[0].value;
+        employeeInfo = employeeInfo.replace(/,/g, '&').replace(/:/g, '=').replace("{","").replace("}","");
+        window.location = "/Actividades_war_exploded/EditEmployee.jsp?" + employeeInfo;
+        // document.getElementById("insertForm").submit();
     }
 
 </script>
