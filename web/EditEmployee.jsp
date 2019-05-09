@@ -13,15 +13,15 @@
 <form id="insertForm" action="manage" method="post">
     <label>
         id:
-        <input type="text" name="name" value=${param.id} readonly>
+        <input type="text" name="name" value=${param.id} onchange="updateInfo(this)" readonly>
     </label>
     <label>
         Name:
-        <input type="text" name="name" value=${param.name} required>
+        <input type="text" name="name" value=${param.name} onchange="updateInfo(this)" required>
     </label>
     <label>
         Age:
-        <input type="number" min="1" max="150" name="age" value=${param.age} required>
+        <input type="number" min="1" max="150" name="age" value=${param.age} onchange="updateInfo(this)" required>
     </label>
     <label>
         Email:
@@ -29,14 +29,14 @@
     </label>
     <input id="employeeInfo" type="hidden" name="employee" value="">
     <input type="hidden" name="operation" value="update">
-    <button id="submitButton" type="button" name="operation" value="insert" onclick="submitForm()">Actualizar</button>
+    <button id="submitButton" type="submit" name="operation" value="insert">Actualizar</button>
 </form>
 </body>
 
 <script>
     "use strict";
 
-    function submitForm(e) {
+    function updateInfo(e) {
         console.log("Submitting form...");
         var employeeData = ""; //Get input fields
 
@@ -47,12 +47,12 @@
         var name = formInputsElement[1].value;
         var age = formInputsElement[2].value;
         var email = formInputsElement[3].value;
-        employeeData = "{id:".concat(id, ",name:").concat(name, ",age:").concat(age, ",email:").concat(email, "}");
+        employeeData = "{id:".concat(id, ",name:'").concat(name, "',age:").concat(age, ",email:").concat(email, "}");
         // employeeData = "{name:".concat(name, ",age:").concat(age, ",email:").concat(email, "}");
         employeeInfoElement.value = employeeData;
         console.log(employeeInfoElement.value); // formButton.value = "insert";
 
-        document.getElementById("insertForm").submit();
+        // document.getElementById("insertForm").submit();
     }
     //
     // (function() {

@@ -45,26 +45,26 @@
 <form id="insertForm" action="manage" method="post">
     <label>
         Name:
-        <input type="text" name="name" required>
+        <input type="text" name="name" onchange="updateEmployeeInfo(this)" required>
     </label>
     <label>
         Age:
-        <input type="number" min="1" max="150" name="age" required>
+        <input type="number" min="1" max="150" name="age" onchange="updateEmployeeInfo(this)" required>
     </label>
     <label>
         Email:
-        <input type="email" name="email" required>
+        <input type="email" name="email"  onchange="updateEmployeeInfo(this)" required>
     </label>
     <input id="employeeInfo" type="hidden" name="employee" value="">
     <input type="hidden" name="operation" value="insert">
-    <button id="submitButton" type="button" name="operation" value="insert" onclick="submitForm(this);">Agregar</button>
+    <button id="submitButton" type="submit" name="operation" value="insert">Agregar</button>
 </form>
 </body>
 
 <script>
     "use strict";
 
-    function submitForm(e) {
+    function updateEmployeeInfo(e) {
         console.log("Submitting form...");
         var employeeData = ""; //Get input fields
 
@@ -74,11 +74,11 @@
         var name = formInputsElement[0].value;
         var age = formInputsElement[1].value;
         var email = formInputsElement[2].value;
-        employeeData = "{name:".concat(name, ",age:").concat(age, ",email:").concat(email, "}");
+        employeeData = "{name:'".concat(name, "',age:").concat(age, ",email:").concat(email, "}");
         employeeInfoElement.value = employeeData;
         console.log(employeeInfoElement.value); // formButton.value = "insert";
 
-        document.getElementById("insertForm").submit();
+        // document.getElementById("insertForm").submit();
     }
 
     function submitEdit(element) {
