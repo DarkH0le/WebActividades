@@ -7,6 +7,6 @@
 </head>
 <body>
 <h1>Welcome To Struts 2!</h1>
-<a href="select-beer">Actividad!</a>
+<a href="calculadora-masa">Actividad!</a>
 </body>
 </html>
