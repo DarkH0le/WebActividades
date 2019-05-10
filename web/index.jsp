@@ -1,16 +1,12 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: darkh0le
-  Date: 2019-04-23
-  Time: 09:20
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <html>
-  <head>
-    <title>$Title$</title>
-  </head>
-  <body>
-  $END$
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <title>Basic Struts 2 Application - Welcome</title>
+</head>
+<body>
+<h1>Welcome To Struts 2!</h1>
+<a href="select-beer">Actividad!</a>
+</body>
 </html>
