@@ -1,6 +1,5 @@
 package com.darkh0le.actions.order;
 
-import com.darkh0le.model.EmployeeEntity;
 import com.darkh0le.model.PizzaEntity;
 import com.darkh0le.model.PizzaManagement;
 import com.opensymphony.xwork2.Action;
@@ -11,13 +10,13 @@ import java.util.Objects;
 /**
  * @author $darkh0le
  */
-public class GetOrders implements Action {
+public class Order implements Action {
 
     private List<PizzaEntity> allPizzas = null;
     private String test = "Test1";
     private String test2 = "Tes2t";
 
-    public GetOrders() {
+    public Order() {
         this.allPizzas = PizzaManagement.getAllPizzas();
     }
 

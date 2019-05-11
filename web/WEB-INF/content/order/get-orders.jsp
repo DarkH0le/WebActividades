@@ -11,10 +11,11 @@
 <html>
 <head>
     <title>Get Order</title>
+    <s:head/>
     <sj:head/>
 </head>
 <body>
-<h1>Grid</h1>
+    <h1>Grid</h1>
 
     <s:iterator value="allPizzas" status="stat">
 
@@ -29,7 +30,7 @@
 
     </s:iterator>
 
-    <h1><s:property value="test" /></h1>
+    <h1><s:property value="test2" /></h1>
 
 
 </body>
