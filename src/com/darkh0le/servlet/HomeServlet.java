@@ -1,6 +1,7 @@
 package com.darkh0le.servlet;
 
-import com.darkh0le.model.EmployeeManagement;
+import com.darkh0le.model.PizzaEntity;
+import com.darkh0le.model.PizzaManagement;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -18,9 +19,9 @@ public class HomeServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        System.out.println("InHomeSerlvlet");
         try {
-//            EmployeeManagement.getAllTables();
+//            PizzaManagement.getAllTables();
         } catch (Exception e) {
             e.printStackTrace();
         }

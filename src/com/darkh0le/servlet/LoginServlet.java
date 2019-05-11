@@ -1,5 +1,8 @@
 package com.darkh0le.servlet;
 
+import com.darkh0le.model.PizzaEntity;
+import com.darkh0le.model.PizzaManagement;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -18,6 +21,16 @@ public class LoginServlet extends HttpServlet {
 
         HttpSession session = request.getSession();
 
+        PizzaEntity pizzaTest = new PizzaEntity();
+        pizzaTest.setIngirdients("Test");
+        pizzaTest.setName("LA CHINGONA");
+        pizzaTest.setSizeOne("20cm");
+        pizzaTest.setSizeOnePrice("200");
+        pizzaTest.setSizeTwo("35cm");
+        pizzaTest.setSizeTwoPrice("250");
+        System.out.println(pizzaTest);
+        PizzaManagement.altaPizza(pizzaTest);
+
         //Check if session wants to be done
         if(request.getParameter("logout") != null)
         {
@@ -33,8 +46,7 @@ public class LoginServlet extends HttpServlet {
         if (session.getAttribute("loginFailed") == null){
             session.setAttribute("loginFailed",false);
         }
-        request.getRequestDispatcher("login-page.jsp")
-                .forward(request, response);
+//        request.getRequestDispatcher("login-page.jsp").forward(request, response);
 
     }
 

@@ -12,5 +12,8 @@
         <property name="show_sql">true</property>
         <property name="current_session_context_class">thread</property>
         <property name="hibernate.query.factory_class">org.hibernate.hql.internal.classic.ClassicQueryTranslatorFactory</property>
+        <mapping class="com.darkh0le.model.OrderEntity"/>
+        <mapping class="com.darkh0le.model.OrderStatusEntity"/>
+        <mapping class="com.darkh0le.model.PizzaEntity"/>
     </session-factory>
 </hibernate-configuration>
