@@ -15,8 +15,26 @@ public class GetOrders implements Action {
 
     private static List<PizzaEntity> allPizzas = null;
 
+    public static void setAllPizzas(List<PizzaEntity> allPizzas) {
+        GetOrders.allPizzas = allPizzas;
+    }
+
+    public static void setTest(String test) {
+        GetOrders.test = test;
+    }
+
+    private static String test = "Test";
+
     public GetOrders() {
         allPizzas = PizzaManagement.getAllPizzas();
+    }
+
+    public static List<PizzaEntity> getAllPizzas() {
+        return allPizzas;
+    }
+
+    public static String getTest() {
+        return test;
     }
 
     @Override

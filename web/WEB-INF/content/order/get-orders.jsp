@@ -7,10 +7,30 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="s" uri="/struts-tags"%>
+<%@ taglib prefix="sj" uri="/struts-jquery-tags"%>
 <html>
 <head>
     <title>Get Order</title>
+    <sj:head/>
 </head>
 <body>
+<h1>Grid</h1>
+
+    <s:iterator value="allPizzas" status="stat">
+
+    <%--    <span>Name <s:property value="%{#stat.index}" /> info: </span>--%>
+
+        <label>name: </label>
+        <s:textfield name="allPizzas[%{#stat.index}].name" />
+
+        <label>age: </label>
+        <s:textfield name="allPizzas[%{#stat.index}].ingirdients" />
+        <br/>
+
+    </s:iterator>
+
+    <h1><s:property value="test" /></h1>
+
+
 </body>
 </html>
