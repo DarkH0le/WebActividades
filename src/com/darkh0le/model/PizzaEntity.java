@@ -105,4 +105,17 @@ public class PizzaEntity {
     public int hashCode() {
         return Objects.hash(idPizza, name, ingirdients, sizeOne, sizeOnePrice, sizeTwo, sizeTwoPrice);
     }
+
+    @Override
+    public String toString() {
+        return "PizzaEntity{" +
+                "idPizza=" + idPizza +
+                ", name='" + name + '\'' +
+                ", ingirdients='" + ingirdients + '\'' +
+                ", sizeOne='" + sizeOne + '\'' +
+                ", sizeOnePrice='" + sizeOnePrice + '\'' +
+                ", sizeTwo='" + sizeTwo + '\'' +
+                ", sizeTwoPrice='" + sizeTwoPrice + '\'' +
+                '}';
+    }
 }

@@ -4,10 +4,12 @@ import org.hibernate.*;
 import org.hibernate.query.Query;
 import org.hibernate.cfg.Configuration;
 
+import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.metamodel.EntityType;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
 
 /**
@@ -180,5 +182,39 @@ public class PizzaManagement {
             return false;
         }
         return true;
+    }
+
+    public static List<PizzaEntity> getAllPizzas() {
+
+        System.out.println("Getting all the Pizzas");
+        Transaction tx = null;
+//        EmployeeEntity result = emp;
+
+        try (Session session = getSession()) {
+            tx = session.beginTransaction();
+//            session.save(pizza);
+//            session.createCriteria(MyEntity.class).list();
+            CriteriaQuery<PizzaEntity> criteriaQuery = session.getCriteriaBuilder().createQuery(PizzaEntity.class);
+            criteriaQuery.from(PizzaEntity.class);
+
+            List<PizzaEntity> allPizzas = session.createQuery(criteriaQuery).getResultList();
+            //Show all entities
+//            reportAllTables(session);
+            System.out.println("Process completed");
+            //Commit transaction if not failure
+            tx.commit();
+            //response.sendRedirect("ShowEmployees.jsp");
+            return allPizzas;
+        } catch (HibernateException e) {
+            System.out.println("Something went wrong while getting all the pizzas");
+            if (tx != null) {
+                tx.rollback();
+                e.printStackTrace();
+                System.out.println(e);
+            }
+        }
+        return null;
+//        return session.createCriteria(MyEntity.class).list();
+
     }
 }
