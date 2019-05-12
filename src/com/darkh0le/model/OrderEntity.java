@@ -117,4 +117,18 @@ public class OrderEntity {
     public int hashCode() {
         return Objects.hash(idOrder, street, neighborhood, city, phone, size, amount, idPizza);
     }
+
+    @Override
+    public String toString() {
+        return "OrderEntity{" +
+                "idOrder=" + idOrder +
+                ", street='" + street + '\'' +
+                ", neighborhood='" + neighborhood + '\'' +
+                ", city='" + city + '\'' +
+                ", phone='" + phone + '\'' +
+                ", size='" + size + '\'' +
+                ", amount='" + amount + '\'' +
+                ", idPizza='" + idPizza + '\'' +
+                '}';
+    }
 }

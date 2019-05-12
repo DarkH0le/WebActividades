@@ -184,6 +184,37 @@ public class PizzaManagement {
         return true;
     }
 
+    public static boolean setOrder(OrderEntity orderEntity){
+
+        System.out.println("Inseting new OrderBean");
+        Transaction tx = null;
+//        EmployeeEntity result = emp;
+
+        try (Session session = getSession()) {
+            tx = session.beginTransaction();
+            session.save(orderEntity);
+
+            //Show all entities
+//            reportAllTables(session);
+            System.out.println("Process completed");
+            //Commit transaction if not failure
+            tx.commit();
+            //response.sendRedirect("ShowEmployees.jsp");
+
+        } catch (HibernateException e) {
+            System.out.println("Something went wrong while inserting a new order");
+            if (tx != null) {
+                tx.rollback();
+                e.printStackTrace();
+                System.out.println(e);
+            }
+            return false;
+        }
+        return true;
+    }
+
+
+
     public static List<PizzaEntity> getAllPizzas() {
 
         System.out.println("Getting all the Pizzas");

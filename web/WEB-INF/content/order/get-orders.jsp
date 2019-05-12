@@ -31,7 +31,18 @@
     </s:iterator>
 
     <h1><s:property value="test2" /></h1>
-
+    <div class="card" style="width: 18rem;">
+        <%--    <img class="card-img-top" src="%{<s:property value="#pizza.image">}" alt="Card image cap"/>--%>
+        <div class="card-body">
+        <h5 class="card-title"><s:property value="#pizza.name"/></h5>
+        <h6 class="card-subtitle mb-2 text-muted"><s:property value="#pizza.ingirdients" /></h6>
+        <p class="card-text">Size 1:<s:property value="#pizza.sizeOne" /></p>
+        <p class="card-text">Size 2:<s:property value="#pizza.sizeTwo" /></p>
+        <p class="card-text">$<s:property value="#pizza.sizeOnePrice" /></p>
+        <p class="card-text">$<s:property value="#pizza.sizeTwoPrice" /></p>
+        <a href="#" class="card-link">Card link</a>
+        </div>
+    </div>
 
 </body>
 </html>

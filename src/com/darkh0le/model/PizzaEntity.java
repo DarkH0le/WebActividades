@@ -16,6 +16,7 @@ public class PizzaEntity {
     private String sizeOnePrice;
     private String sizeTwo;
     private String sizeTwoPrice;
+    private String image;
 
     @Id
     @Column(name = "idPizza", nullable = false)
@@ -87,6 +88,17 @@ public class PizzaEntity {
         this.sizeTwoPrice = sizeTwoPrice;
     }
 
+    @Basic
+    @Column(name = "image", nullable = true, length = 45)
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -98,12 +110,13 @@ public class PizzaEntity {
                 Objects.equals(sizeOne, that.sizeOne) &&
                 Objects.equals(sizeOnePrice, that.sizeOnePrice) &&
                 Objects.equals(sizeTwo, that.sizeTwo) &&
-                Objects.equals(sizeTwoPrice, that.sizeTwoPrice);
+                Objects.equals(sizeTwoPrice, that.sizeTwoPrice) &&
+                Objects.equals(image, that.image);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(idPizza, name, ingirdients, sizeOne, sizeOnePrice, sizeTwo, sizeTwoPrice);
+        return Objects.hash(idPizza, name, ingirdients, sizeOne, sizeOnePrice, sizeTwo, sizeTwoPrice,image);
     }
 
     @Override
@@ -116,6 +129,7 @@ public class PizzaEntity {
                 ", sizeOnePrice='" + sizeOnePrice + '\'' +
                 ", sizeTwo='" + sizeTwo + '\'' +
                 ", sizeTwoPrice='" + sizeTwoPrice + '\'' +
+                ", image='" + image + '\'' +
                 '}';
     }
 }
