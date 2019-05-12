@@ -193,7 +193,35 @@ public class PizzaManagement {
         try (Session session = getSession()) {
             tx = session.beginTransaction();
             session.save(pizzaOrderEntity);
+            //Show all entities
+//            reportAllTables(session);
+            //Commit transaction if not failure
+            tx.commit();
+            //response.sendRedirect("ShowEmployees.jsp");
+            System.out.println("Process completed");
 
+        } catch (HibernateException e) {
+            System.out.println("Something went wrong while inserting a new order");
+            if (tx != null) {
+                tx.rollback();
+                e.printStackTrace();
+                System.out.println(e);
+            }
+            return false;
+        } catch (Exception e) {
+            System.out.println("ALV CON TODOS :V");
+            System.out.println(e);
+        }
+        return true;
+    }
+    public static boolean updateOrder(PizzaOrderEntity pizzaOrderEntity){
+
+        System.out.println("Inseting new Order");
+        Transaction tx = null;
+//        EmployeeEntity result = emp;
+        try (Session session = getSession()) {
+            tx = session.beginTransaction();
+            session.saveOrUpdate(pizzaOrderEntity);
             //Show all entities
 //            reportAllTables(session);
             //Commit transaction if not failure
@@ -249,6 +277,93 @@ public class PizzaManagement {
         }
         return null;
 //        return session.createCriteria(MyEntity.class).list();
+
+    }
+
+    public static List<PizzaOrderEntity> getAllOrders() {
+        System.out.println("Getting all the Orders");
+        Transaction tx = null;
+//        EmployeeEntity result = emp;
+
+        try (Session session = getSession()) {
+            tx = session.beginTransaction();
+            CriteriaQuery<PizzaOrderEntity> criteriaQuery = session.getCriteriaBuilder().createQuery(PizzaOrderEntity.class);
+            criteriaQuery.from(PizzaOrderEntity.class);
+            List<PizzaOrderEntity> allOrders = session.createQuery(criteriaQuery).getResultList();
+            //Commit transaction if not failure
+            tx.commit();
+            System.out.println("Process completed");
+            return allOrders;
+        } catch (HibernateException e) {
+            System.out.println("Something went wrong while getting all the Orders");
+            if (tx != null) {
+                tx.rollback();
+                e.printStackTrace();
+                System.out.println(e);
+            }
+        }
+        return null;
+    }
+
+    public static boolean deleteOrder(PizzaOrderEntity pizzaOrderEntity) {
+
+        System.out.println("deleting new Order");
+        Transaction tx = null;
+//        EmployeeEntity result = emp;
+        try (Session session = getSession()) {
+            tx = session.beginTransaction();
+            session.delete(pizzaOrderEntity);
+
+            //Show all entities
+//            reportAllTables(session);
+            //Commit transaction if not failure
+            tx.commit();
+            //response.sendRedirect("ShowEmployees.jsp");
+            System.out.println("Process completed");
+
+        } catch (HibernateException e) {
+            System.out.println("Something went wrong while deleting a new order");
+            if (tx != null) {
+                tx.rollback();
+                e.printStackTrace();
+                System.out.println(e);
+            }
+            return false;
+        } catch (Exception e) {
+            System.out.println("ALV CON TODOS :V");
+            System.out.println(e);
+        }
+        return true;
+    }
+
+    public static PizzaOrderEntity getOrder(int idPizzaOrder) {
+        System.out.println("getting Order");
+        Transaction tx = null;
+        PizzaOrderEntity order = null;
+        System.out.println("The id of the pizza is: " + idPizzaOrder);
+//        EmployeeEntity result = emp;
+        try (Session session = getSession()) {
+            tx = session.beginTransaction();
+//            order = session.byId(PizzaOrderEntity.class).getReference(idPizzaOrder);
+            order =  (PizzaOrderEntity) session.get(PizzaOrderEntity.class, idPizzaOrder);
+
+            tx.commit();
+            //response.sendRedirect("ShowEmployees.jsp");
+            System.out.println("Process completed");
+        } catch (HibernateException e) {
+            System.out.println("Something went wrong while deleting a new order");
+            if (tx != null) {
+                tx.rollback();
+                e.printStackTrace();
+                System.out.println(e);
+            }
+            return null;
+        } catch (Exception e) {
+            System.out.println("ALV CON TODOS :V");
+            System.out.println(e);
+        }
+        System.out.println(order);
+        return order;
 
     }
 }

@@ -11,6 +11,14 @@
     <title>$Title$</title>
   </head>
   <body>
-  $END$
+  <h2>User</h2>
+  <a href="order/order">Pizzas</a>
+  <h2>Admin</h2>
+  <ul>
+    <li>
+      <a href="admin/create/pizza">Alta Pizza</a>
+      <a href="admin/create/pizza">List Orders</a>
+    </li>
+  </ul>
   </body>
 </html>

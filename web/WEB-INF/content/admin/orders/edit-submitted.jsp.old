@@ -10,15 +10,15 @@
 <%@ taglib prefix="sj" uri="/struts-jquery-tags"%>
 <html>
 <head>
-    <title>Submit Order</title>
+    <title>Ya rifo</title>
     <s:head/>
     <sj:head/>
 </head>
 <body>
-ORDEN COMPLETADA
-<br/>
-<a href="order"/>" >Regresar a Menu!</a>
-
+<div class="container">
+<h1>Pizza Added</h1>
+</div>
+Over Heree
 </body>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <link href="${pageContext.request.contextPath}/css/order/style.css" rel="stylesheet" type="text/css"/>
