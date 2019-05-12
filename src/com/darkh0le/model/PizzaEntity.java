@@ -7,7 +7,7 @@ import java.util.Objects;
  * @author $darkh0le
  */
 @Entity
-@Table(name = "Pizza", schema = "PizzaRepo")
+@Table(name = "Pizza", schema = "PizzaRepo", catalog = "")
 public class PizzaEntity {
     private int idPizza;
     private String name;
@@ -98,7 +98,6 @@ public class PizzaEntity {
         this.image = image;
     }
 
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -116,7 +115,7 @@ public class PizzaEntity {
 
     @Override
     public int hashCode() {
-        return Objects.hash(idPizza, name, ingirdients, sizeOne, sizeOnePrice, sizeTwo, sizeTwoPrice,image);
+        return Objects.hash(idPizza, name, ingirdients, sizeOne, sizeOnePrice, sizeTwo, sizeTwoPrice, image);
     }
 
     @Override

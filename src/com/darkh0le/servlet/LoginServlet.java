@@ -21,16 +21,6 @@ public class LoginServlet extends HttpServlet {
 
         HttpSession session = request.getSession();
 
-        PizzaEntity pizzaTest = new PizzaEntity();
-        pizzaTest.setIngirdients("Test");
-        pizzaTest.setName("LA CHINGONA");
-        pizzaTest.setSizeOne("20cm");
-        pizzaTest.setSizeOnePrice("200");
-        pizzaTest.setSizeTwo("35cm");
-        pizzaTest.setSizeTwoPrice("250");
-        System.out.println(pizzaTest);
-        PizzaManagement.altaPizza(pizzaTest);
-
         //Check if session wants to be done
         if(request.getParameter("logout") != null)
         {

@@ -10,7 +10,7 @@
 <%@ taglib prefix="sj" uri="/struts-jquery-tags"%>
 <html>
 <head>
-    <title>Fill Order</title>
+    <title>New Pizza</title>
     <s:head/>
     <sj:head/>
 </head>
@@ -38,46 +38,32 @@
 <%--                </div>--%>
 <%--            </div>--%>
 <%--            </s:form>--%>
-    <s:form cssClass="form" action="fill-order-submit" theme="css_xhtml">
+    <s:form cssClass="form" action="pizza-submit" theme="css_xhtml">
         <div class="form-group">
             <label for="fName">Nombre</label>
-<%--            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="">--%>
-<%--            <s:textfield name="pizzaOrderEntity.name" theme="css_xhtml" id="fName"/>--%>
-            <s:textfield name="pizzaOrderEntity.name" id="fName"/>
+            <s:textfield name="name" id="fName"/>
         </div>
         <div class="form-group">
-            <label for="fCalle">Calle</label>
-<%--            <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="">--%>
-            <s:textfield id="fCalle" name="pizzaOrderEntity.street" theme="css_xhtml"/>
+            <label for="ingredients">Ingredientes</label>
+            <s:textfield id="ingredients" name="ingredients" placeholder="ingrediente,ingrediente,ingrediente" theme="css_xhtml"/>
         </div>
         <div class="form-group">
-            <label for="fCalle">Colonia</label>
-                <%--            <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="">--%>
-            <s:textfield id="fColonia" name="pizzaOrderEntity.town" theme="css_xhtml"/>
+            <label for="sizeOne">Tamano 1:</label>
+            <s:textfield id="sizeOne" name="sizeOne" placeholder="Ejemplo: 14cm" theme="css_xhtml"/>
         </div>
         <div class="form-group">
-            <label for="fCiudad">Ciudad</label>
-                <%--            <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="">--%>
-            <s:textfield id="fCiudad" name="pizzaOrderEntity.city" theme="css_xhtml"/>
+            <label for="priceOne">Precio 1:</label>
+            <s:textfield id="priceOne" name="priceOne" theme="css_xhtml"/>
         </div>
         <div class="form-group">
-            <label for="fCalle">Telefono</label>
-                <%--            <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="">--%>
-            <s:textfield id="fTelefono" name="pizzaOrderEntity.phone" theme="css_xhtml" type="number"/>
+            <label for="sizeTwo">Tamano 2:</label>
+            <s:textfield id="sizeTwo" name="sizeTwo" placeholder="Ejemplo: 17cm" theme="css_xhtml"/>
         </div>
         <div class="form-group">
-            <label for="fTamano">Tamano</label>
-                <%--            <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="">--%>
-<%--            <s:textfield id="fTamano" name="pizzaOrderEntity.size" theme="css_xhtml"/>--%>
-            <s:select list="sizes" name="pizzaOrderEntity.size" id="fTamano"/>
+            <label for="priceTwo">Precio 2:</label>
+            <s:textfield id="priceTwo" name="priceTwo" theme="css_xhtml"/>
         </div>
-        <div class="form-group">
-            <label for="fCantidad">Cantidad</label>
-                <%--            <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="">--%>
-            <s:textfield id="fCantidad" name="pizzaOrderEntity.amout" theme="css_xhtml" type="number"/>
-        </div>
-<%--        <input type="hidden" name="selectedPizza" value="testttt" id="registerUser_username"/>--%>
-<%--        <s:textfield name="selectedPizza" value="testttt"/>--%>
+
         <s:submit cssClass="btn btn-success" theme="css_xhtml" value="Ordenar"/>
     </s:form>
 

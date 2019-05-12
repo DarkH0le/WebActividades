@@ -167,9 +167,10 @@ public class PizzaManagement {
 
             //Show all entities
 //            reportAllTables(session);
-            System.out.println("Process completed");
             //Commit transaction if not failure
             tx.commit();
+            System.out.println("Process completed");
+
             //response.sendRedirect("ShowEmployees.jsp");
 
         } catch (HibernateException e) {
@@ -184,22 +185,21 @@ public class PizzaManagement {
         return true;
     }
 
-    public static boolean setOrder(OrderEntity orderEntity){
+    public static boolean setOrder(PizzaOrderEntity pizzaOrderEntity){
 
-        System.out.println("Inseting new OrderBean");
+        System.out.println("Inseting new Order");
         Transaction tx = null;
 //        EmployeeEntity result = emp;
-
         try (Session session = getSession()) {
             tx = session.beginTransaction();
-            session.save(orderEntity);
+            session.save(pizzaOrderEntity);
 
             //Show all entities
 //            reportAllTables(session);
-            System.out.println("Process completed");
             //Commit transaction if not failure
             tx.commit();
             //response.sendRedirect("ShowEmployees.jsp");
+            System.out.println("Process completed");
 
         } catch (HibernateException e) {
             System.out.println("Something went wrong while inserting a new order");
@@ -209,6 +209,9 @@ public class PizzaManagement {
                 System.out.println(e);
             }
             return false;
+        } catch (Exception e) {
+            System.out.println("ALV CON TODOS :V");
+            System.out.println(e);
         }
         return true;
     }

@@ -18,19 +18,19 @@
 <div class="container">
     <div class="row">
         <s:iterator value="allPizzas" var="pizza">
-            <s:form action="fillOrder">
-            <div class="card" style="width: 18rem;">
+            <s:form action="fill-order">
+            <div class="card" style="width: 15rem;">
                 <img class="card-img-top" src="<s:property value="#pizza.image" />" alt="Card image cap"/>
                 <div class="card-body">
                     <h5 class="card-title"><s:property value="#pizza.name" /></h5>
                     <h6 class="card-subtitle mb-2 text-muted"><s:property value="#pizza.ingirdients" /></h6>
                     <div class="row">
-                        <p class="card-text col-6">Size 1:<s:property value="#pizza.sizeOne" /></p>
-                        <p class="card-text">$<s:property value="#pizza.sizeOnePrice" /></p>
+                        <p class="card-text col-6"><b>Size: </b><s:property value="#pizza.sizeOne" /></p></br>
+                        <p class="card-text"><b>Price: </b>$<s:property value="#pizza.sizeOnePrice" /></p>
                     </div>
                     <div class="row">
-                        <p class="card-text col-6">Size 1:<s:property value="#pizza.sizeTwo" /></p>
-                        <p class="card-text">$<s:property value="#pizza.sizeTwoPrice" /></p>
+                        <p class="card-text col-6"><b>Size: </b><s:property value="#pizza.sizeTwo" /></p></br>
+                        <p class="card-text"><b>Price: </b>$<s:property value="#pizza.sizeTwoPrice" /></p>
                     </div>
                         <%--            <p class="card-text">Size 2:<s:property value="#pizza.sizeTwo" /></p>--%>
                         <%--            <p class="card-text">$<s:property value="#pizza.sizeTwoPrice" /></p>--%>
@@ -38,6 +38,14 @@
                     <s:submit cssClass="btn btn-success card-link" theme="css_xhtml" value="Ordenar"/>
                 </div>
             </div>
+<%--                <s:textfield name="selectedPizza" value="%{<s:property value='#pizza.name'/>}" />--%>
+<%--                <s:textfield name="selectedPizza" value="14cm"  />--%>
+                <s:hidden name="selectedPizza" value="%{#pizza.name}"/>
+<%--                <s:hidden name="selectedPizza" value="%{#pizza.idPizza}" />--%>
+                <s:hidden name="sizeOne" value="%{#pizza.sizeOne}" />
+                <s:hidden name="sizeTwo" value="%{#pizza.sizeTwo}" />
+<%--                <s:hidden name="pizzaEntity" value="%{#pizza}" />--%>
+                <%--                <s:set var="personName" value="person.name"/>--%>
             </s:form>
         </s:iterator>
 
