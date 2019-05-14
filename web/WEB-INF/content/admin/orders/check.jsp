@@ -13,58 +13,43 @@
     <title>Get all Order</title>
     <s:head/>
     <sj:head/>
+    <script>
+        $(document).ready(function () {
+            $('#ordersTable').DataTable();
+            $('.dataTables_length').addClass('bs-select');
+        });
+    </script>
 </head>
 <body>
-<%--<div class="container">--%>
-<%--    <div class="row">--%>
-<%--        <s:iterator value="pizzaOrderEntityList" var="order">--%>
-<%--            <s:form action="fill-order">--%>
-<%--                order--%>
-<%--                <div class="card" style="width: 15rem;">--%>
-<%--&lt;%&ndash;                    <img class="card-img-top" src="<s:property value="#pizza.image" />" alt="Card image cap"/>&ndash;%&gt;--%>
-<%--                    <div class="card-body">--%>
-<%--                        <h5 class="card-title"><s:property value="#order.name" /></h5>--%>
-<%--                        <h6 class="card-subtitle mb-2 text-muted"><s:property value="#order.street" /></h6>--%>
-<%--                        <div class="row">--%>
-<%--                            <p class="card-text col-6"><b>Size: </b><s:property value="#order.town" /></p></br>--%>
-<%--                            <p class="card-text"><b>Price: </b>$<s:property value="#order.city" /></p>--%>
-<%--                        </div>--%>
-<%--&lt;%&ndash;                        <div class="row">&ndash;%&gt;--%>
-<%--&lt;%&ndash;                            <p class="card-text col-6"><b>Size: </b><s:property value="#pizza.sizeTwo" /></p></br>&ndash;%&gt;--%>
-<%--&lt;%&ndash;                            <p class="card-text"><b>Price: </b>$<s:property value="#pizza.sizeTwoPrice" /></p>&ndash;%&gt;--%>
-<%--&lt;%&ndash;                        </div>&ndash;%&gt;--%>
-<%--                            &lt;%&ndash;            <p class="card-text">Size 2:<s:property value="#pizza.sizeTwo" /></p>&ndash;%&gt;--%>
-<%--                            &lt;%&ndash;            <p class="card-text">$<s:property value="#pizza.sizeTwoPrice" /></p>&ndash;%&gt;--%>
-<%--                            &lt;%&ndash;                    <a href="#" class="card-link">Card link</a>&ndash;%&gt;--%>
-<%--                        <s:submit cssClass="btn btn-success card-link" theme="css_xhtml" value="Ordenar"/>--%>
-<%--                    </div>--%>
-<%--                </div>--%>
-<%--                &lt;%&ndash;                <s:textfield name="selectedPizza" value="%{<s:property value='#pizza.name'/>}" />&ndash;%&gt;--%>
-<%--                &lt;%&ndash;                <s:textfield name="selectedPizza" value="14cm"  />&ndash;%&gt;--%>
-<%--&lt;%&ndash;                <s:hidden name="selectedPizza" value="%{#pizza.name}"/>&ndash;%&gt;--%>
-<%--                &lt;%&ndash;                <s:hidden name="selectedPizza" value="%{#pizza.idPizza}" />&ndash;%&gt;--%>
-<%--&lt;%&ndash;                <s:hidden name="sizeOne" value="%{#pizza.sizeOne}" />&ndash;%&gt;--%>
-<%--&lt;%&ndash;                <s:hidden name="sizeTwo" value="%{#pizza.sizeTwo}" />&ndash;%&gt;--%>
-<%--                &lt;%&ndash;                <s:hidden name="pizzaEntity" value="%{#pizza}" />&ndash;%&gt;--%>
-<%--                &lt;%&ndash;                <s:set var="personName" value="person.name"/>&ndash;%&gt;--%>
-<%--            </s:form>--%>
-<%--        </s:iterator>--%>
-<h1><a href="/">HOME</a></h1>
-        <table class="table">
-            <thead>
-            <tr>
-                <th scope="col">#Id</th>
-                <th scope="col">Pizza</th>
-                <th scope="col">Calle</th>
-                <th scope="col">Colonia</th>
-                <th scope="col">Cantidad</th>
-            </tr>
-            </thead>
-            <tbody>
+<nav class="navbar sticky-top navbar-light bg-light">
+    <a class="navbar-brand" href="../../order/order">In-N-Out Burger</a>
+    <a class="navbar-brand" href="#">Sticky top</a>
+    <a class="navbar-brand" href="#">Sticky top</a>
+</nav>
+<div class="container-fuild m-4">
+<%--    <h1 class="center"><a href="/">HOME</a></h1>--%>
+    <div class="row">
+        <div class="col">
+            <table id="ordersTable" class="table table-striped table-bordered col">
+                <thead>
+                <tr>
+                    <th scope="col">#Id</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Calle</th>
+                    <th scope="col">Colonia</th>
+                    <th scope="col">city</th>
+                    <th scope="col">phone</th>
+                    <th scope="col">actions</th>
+                </tr>
+                </thead>
+                <tbody>
                 <s:iterator value="pizzaOrderEntityList" var="order" >
-                    <tr>
-<%--                    <s:form action="edit" theme="css_xhtml" cssClass="form">--%>
+                        <tr>
+                            <%--                    <s:form action="edit" theme="css_xhtml" cssClass="form">--%>
                         <th scope="row"><s:property value="#order.idPizzaOrder" /></th>
+                        <th>
+                            <s:property value="#order.name" />
+                        </th>
                         <th>
                             <s:property value="#order.street" />
                         </th>
@@ -75,26 +60,38 @@
                             <s:property value="#order.city" />
                         </th>
                         <th>
-<%--                            <s:url action="delete.action" >--%>
-<%--                                <s:param name="id"><s:property value="#order.idPizzaOrder" /></s:param>--%>
-<%--                            </s:url>--%>
-                        <s:url action="delete" var="urlTag" >
-                            <s:param name="id"><s:property value="#order.idPizzaOrder" /></s:param>
-                        </s:url>
-                        <a href="<s:property value="#urlTag" />" >delete</a>
-                        <s:url action="edit" var="urlTag" >
-                            <s:param name="id"><s:property value="#order.idPizzaOrder" /></s:param>
-                        </s:url>
-                        <a href="<s:property value="#urlTag" />" >edit</a>
+                            <s:property value="#order.phone" />
                         </th>
-<%--                    </s:form>--%>
+
+
+                        <th>
+                                <%--                            <s:url action="delete.action" >--%>
+                                <%--                                <s:param name="id"><s:property value="#order.idPizzaOrder" /></s:param>--%>
+                                <%--                            </s:url>--%>
+                            <s:url action="delete" var="urlTag" >
+                                <s:param name="id"><s:property value="#order.idPizzaOrder" /></s:param>
+                            </s:url>
+                            <a href="<s:property value="#urlTag" />" >delete</a>
+                            <s:url action="edit" var="urlTag" >
+                                <s:param name="id"><s:property value="#order.idPizzaOrder" /></s:param>
+                            </s:url>
+                            <a href="<s:property value="#urlTag" />" >edit</a>
+                        </th>
+                            <%--                    </s:form>--%>
                     </tr>
                 </s:iterator>
-            </tbody>
-        </table>
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
 </body>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <link href="${pageContext.request.contextPath}/css/order/style.css" rel="stylesheet" type="text/css"/>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.18/datatables.min.css"/>
+
+<script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.18/datatables.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
 </html>

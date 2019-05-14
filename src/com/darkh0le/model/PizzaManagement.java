@@ -1,5 +1,6 @@
 package com.darkh0le.model;
 
+import com.darkh0le.actions.admin.create.Pizza;
 import org.hibernate.*;
 import org.hibernate.query.Query;
 import org.hibernate.cfg.Configuration;
@@ -9,6 +10,7 @@ import javax.persistence.metamodel.EntityType;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.List;
 
 
@@ -364,6 +366,37 @@ public class PizzaManagement {
         }
         System.out.println(order);
         return order;
+
+    }
+
+    public static PizzaEntity getPizza(int idPizza) {
+        System.out.println("getting Order");
+        Transaction tx = null;
+        PizzaEntity pizza = null;
+        System.out.println("The id of the pizza is: " + idPizza);
+//        EmployeeEntity result = emp;
+        try (Session session = getSession()) {
+            tx = session.beginTransaction();
+//            order = session.byId(PizzaOrderEntity.class).getReference(idPizzaOrder);
+            pizza =  (PizzaEntity) session.get(PizzaEntity.class, idPizza);
+
+            tx.commit();
+            //response.sendRedirect("ShowEmployees.jsp");
+            System.out.println("Process completed");
+        } catch (HibernateException e) {
+            System.out.println("Something went wrong while deleting a new order");
+            if (tx != null) {
+                tx.rollback();
+                e.printStackTrace();
+                System.out.println(e);
+            }
+            return null;
+        } catch (Exception e) {
+            System.out.println("ALV CON TODOS :V");
+            System.out.println(e);
+        }
+        System.out.println(pizza);
+        return pizza;
 
     }
 }

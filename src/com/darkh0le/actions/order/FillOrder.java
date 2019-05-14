@@ -36,6 +36,7 @@ public class FillOrder implements Action {
 //        System.out.println("in fillorder");
 //        System.out.println("order pojo" + order);
         System.out.println("Selected pizza was: " + selectedPizza);
+
         this.pizzaOrderEntity.setPizzaType(selectedPizza);
         PizzaManagement.setOrder(pizzaOrderEntity);
         return "order-submitted";

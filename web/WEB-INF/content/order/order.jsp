@@ -15,11 +15,19 @@
     <sj:head/>
 </head>
 <body>
-<div class="container">
-    <div class="row">
+<%--<nav class="navbar sticky-top navbar-light bg-dark orange lighten-1">--%>
+<nav class="mb-1 navbar navbar-expand-lg navbar-light orange accent-3 lighten-1" style="background-color: #ff9100;">
+    <a class="navbar-brand" href="#">
+        <img src="https://image.flaticon.com/icons/svg/267/267875.svg" width="30" height="30" class="d-inline-block align-top" alt="">
+        In-n-Eat
+    </a>
+</nav>
+
+<div class="container-fluid m-2">
+    <div class="row justify-content-center">
         <s:iterator value="allPizzas" var="pizza">
             <s:form action="fill-order">
-            <div class="card" style="width: 15rem;">
+            <div class="card m-1" style="width: 15rem;">
                 <img class="card-img-top" src="<s:property value="#pizza.image" />" alt="Card image cap"/>
                 <div class="card-body">
                     <h5 class="card-title"><s:property value="#pizza.name" /></h5>
@@ -51,18 +59,6 @@
 
     </div>
 </div>
-<%--<s:iterator value="allPizzas" var="pizza">--%>
-<%--    <br/>--%>
-<%--    ...  <s:property value="#pizza.name" /><br/>--%>
-<%--    ...  <s:property value="#pizza.ingirdients" /><br/>--%>
-<%--    ...  <s:property value="#pizza.sizeOne" /><br/>--%>
-<%--    ...  <s:property value="#pizza.sizeOnePrice" /><br/>--%>
-<%--    ...  <s:property value="#pizza.sizeTwo" /><br/>--%>
-<%--    ...  <s:property value="#pizza.sizeTwoPrice" /><br/>--%>
-<%--    ...  <s:property value="#pizza.image" /><br/>--%>
-<%--</s:iterator>--%>
-
-<%--<h1>Grid</h1>--%>
 </body>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <link href="${pageContext.request.contextPath}/css/order/style.css" rel="stylesheet" type="text/css"/>

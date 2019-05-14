@@ -1,5 +1,6 @@
 package com.darkh0le.actions.admin.orders;
 
+import com.darkh0le.model.PizzaEntity;
 import com.darkh0le.model.PizzaManagement;
 import com.darkh0le.model.PizzaOrderEntity;
 import com.opensymphony.xwork2.Action;
@@ -10,6 +11,7 @@ import com.opensymphony.xwork2.Action;
 public class Edit implements Action {
 
     private PizzaOrderEntity pizzaOrderEntity = null;
+    private PizzaEntity pizzaEntity = null;
 
     private int id;
 
@@ -17,7 +19,8 @@ public class Edit implements Action {
     @Override
     public String execute() throws Exception {
         pizzaOrderEntity = PizzaManagement.getOrder(id);
-        System.out.println(id);
+//        pizzaEntity = PizzaManagement.getPizza(id);
+//        System.out.println(id);
         return SUCCESS;
     }
 

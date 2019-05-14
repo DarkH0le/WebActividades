@@ -27,11 +27,18 @@ public class FilterLogin implements Filter {
         HttpSession session = ((HttpServletRequest)request).getSession(false);
 
         //If not username return to login page
-        if(session == null || session.getAttribute("username") == null)
-            ((HttpServletResponse)response).sendRedirect("login");
-        //continue the chain
-        else
-            chain.doFilter(request, response);
+        if(session == null || session.getAttribute("username") == null) {
+
+            ((HttpServletResponse) response).sendRedirect("login?origin=admincreate");
+//            request.redirect("login-page.jsp?origin="+ ((HttpServletRequest) request).getRequestURL()).forward(request, response);
+            //continue the chain
+        }
+        else{
+            System.out.println("Success Login");
+//            chain.doFilter(request, response);
+            System.out.println(((HttpServletRequest) request).getRequestURI());
+            ((HttpServletResponse) response).sendRedirect(((HttpServletRequest) request).getRequestURI());
+        }
     }
 
     public void destroy() {

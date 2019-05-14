@@ -25,23 +25,24 @@ public class LoginServlet extends HttpServlet {
         if(request.getParameter("logout") != null)
         {
             session.invalidate();
-            response.sendRedirect("login");
+            response.sendRedirect("");
             return;
         }//    and see if session an username are already set if true redirect to home
         else if(session.getAttribute("username") != null)
         {
-            response.sendRedirect("home");
+            response.sendRedirect("/login-page.jsp");
             return;
         }
         if (session.getAttribute("loginFailed") == null){
             session.setAttribute("loginFailed",false);
         }
-//        request.getRequestDispatcher("login-page.jsp").forward(request, response);
+        request.getRequestDispatcher("/login-page.jsp").forward(request, response);
 
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+        System.out.println("LOGGGGINGINGING");
         HttpSession session = request.getSession();
         if(session.getAttribute("loginEmail") != null)
         {
@@ -62,7 +63,9 @@ public class LoginServlet extends HttpServlet {
         {
             session.setAttribute("username", username);
             request.changeSessionId();
-            response.sendRedirect("home");
+            System.out.println(request.getRequestURI());
+            System.out.println(request.getRequestURL());
+            response.sendRedirect(String.valueOf(request.getRequestURI()));
         } else{
             request.setAttribute("loginFailed", true);
 
